@@ -1,0 +1,89 @@
+﻿@page
+@model SearchEmployeesModel
+@{
+}
+
+<form action="" method="POST" style="margin-top: 50px;">
+  <div class="form-group">
+    <label class="control-label" for="search">Enter Employee Name</label>
+    <input type="text" class="form-control" name="search" id="search" />
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Search Employees" class="btn btn-default" />
+  </div>
+</form>
+
+@if(Model.SearchCompleted) {
+    @if(Model.SearchResults.Count>0) {
+<h1>Employee Details</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Employee Personal Details</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="2">Name</th>
+                        <th>Gender</th>
+                        <th>Employee Status</th>
+                        <th>Work Experience (Months)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                      @foreach(var code in Model.SearchResults) {
+                        <tr>
+                            <td colspan="2">@code.EmployeeName</td>
+                            <td>@code.Gender</td>
+                            <td>
+                              @if(code.LastDay != null){
+                                <text>Retired</text>
+                              }
+                              else{
+                                <text>Active</text>
+                              }
+                            </td>
+                            <td>@code.Experience</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Employee Leave Balances</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 100px;">Leave Type</th>
+                        <th>Balance</th>
+                        <th>Employee Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                      @foreach(var code in Model.SearchResults) {
+                          @foreach(var co in code.Leaves){
+                        <tr>
+                            <td>@co.LeaveTypes.Name</td>
+                            <td>@co.Balance</td>
+                            <td>@code.EmployeeName
+                            </td>
+                        </tr>
+                      }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else {
+        <div class="alert alert-info">
+            <p>
+                <strong>No Employees with such details exist</strong>
+            </p>
+        </div>
+    }
+}

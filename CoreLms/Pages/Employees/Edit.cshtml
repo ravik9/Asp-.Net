@@ -1,0 +1,77 @@
+@page
+@model CoreLms.Pages.Employees.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Update Employee</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Employee.Id" />
+            <div class="form-group">
+                <label asp-for="Employee.FirstName" class="control-label"></label>
+                <input asp-for="Employee.FirstName" class="form-control" />
+                <span asp-validation-for="Employee.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.MidName" class="control-label"></label>
+                <input asp-for="Employee.MidName" class="form-control" />
+                <span asp-validation-for="Employee.MidName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.LastName" class="control-label"></label>
+                <input asp-for="Employee.LastName" class="form-control" />
+                <span asp-validation-for="Employee.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.Gender" class="control-label"></label>
+                <input asp-for="Employee.Gender" class="form-control" />
+                <span asp-validation-for="Employee.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.Designation" class="control-label"></label>
+                <input asp-for="Employee.Designation" class="form-control" />
+                <span asp-validation-for="Employee.Designation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.DateOfJoining" class="control-label"></label>
+                <input asp-for="Employee.DateOfJoining" class="form-control" />
+                <span asp-validation-for="Employee.DateOfJoining" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.LastDay" class="control-label"></label>
+                <input asp-for="Employee.LastDay" class="form-control" />
+                <span asp-validation-for="Employee.LastDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Employee.IsSupervisor" /> @Html.DisplayNameFor(model => model.Employee.IsSupervisor)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.SupervisorId" class="control-label"></label>
+                <select asp-for="Employee.SupervisorId" class="form-control" asp-items="ViewBag.SupervisorId">
+                    <option value="">-- select Supervisor --</option>
+                </select>
+                <span asp-validation-for="Employee.SupervisorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

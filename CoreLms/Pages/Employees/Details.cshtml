@@ -1,0 +1,72 @@
+@page
+@model CoreLms.Pages.Employees.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Employee Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.MidName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.MidName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Gender)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Gender)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Designation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Designation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.DateOfJoining)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.DateOfJoining)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.LastDay)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.LastDay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.IsSupervisor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.IsSupervisor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Supervisor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Supervisor.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Employee.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

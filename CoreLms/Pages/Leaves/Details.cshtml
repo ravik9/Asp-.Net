@@ -1,0 +1,36 @@
+@page
+@model CoreLms.Pages.Leaves.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details of Employee Leave</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Leave.LeaveTypes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Leave.LeaveTypes.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Leave.Balance)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Leave.Balance)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Leave.Employee)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Leave.Employee.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Leave.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

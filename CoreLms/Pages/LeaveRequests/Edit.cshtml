@@ -1,0 +1,75 @@
+@page
+@model CoreLms.Pages.LeaveRequests.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>LeaveRequest</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LeaveRequest.Id" />
+            <div class="form-group">
+                <label asp-for="LeaveRequest.LeaveTypeId" class="control-label"></label>
+                <select asp-for="LeaveRequest.LeaveTypeId" class="form-control" asp-items="ViewBag.LeaveTypeId"></select>
+                <span asp-validation-for="LeaveRequest.LeaveTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.Reason" class="control-label"></label>
+                <input asp-for="LeaveRequest.Reason" class="form-control" />
+                <span asp-validation-for="LeaveRequest.Reason" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.RequestorId" class="control-label"></label>
+                <select asp-for="LeaveRequest.RequestorId" class="form-control" asp-items="ViewBag.RequestorId"></select>
+                <span asp-validation-for="LeaveRequest.RequestorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.StartDate" class="control-label"></label>
+                <input asp-for="LeaveRequest.StartDate" class="form-control" />
+                <span asp-validation-for="LeaveRequest.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.EndDate" class="control-label"></label>
+                <input asp-for="LeaveRequest.EndDate" class="form-control" />
+                <span asp-validation-for="LeaveRequest.EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.RequestDate" class="control-label"></label>
+                <input asp-for="LeaveRequest.RequestDate" class="form-control" />
+                <span asp-validation-for="LeaveRequest.RequestDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.ApprRejDate" class="control-label"></label>
+                <input asp-for="LeaveRequest.ApprRejDate" class="form-control" />
+                <span asp-validation-for="LeaveRequest.ApprRejDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.RequestStatus" class="control-label"></label>
+                <input asp-for="LeaveRequest.RequestStatus" class="form-control" />
+                <span asp-validation-for="LeaveRequest.RequestStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.NoOfDays" class="control-label"></label>
+                <input asp-for="LeaveRequest.NoOfDays" class="form-control" />
+                <span asp-validation-for="LeaveRequest.NoOfDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

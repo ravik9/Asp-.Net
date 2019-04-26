@@ -1,0 +1,94 @@
+﻿@page
+@model EmployeeActionModel
+@{
+}
+
+
+
+
+<form action="" method="POST" style="margin-top: 50px;">
+  <div class="form-group">
+    <label class="control-label" for="empId">Enter Employee Id</label>
+    <input type="text" class="form-control" name="id" id="empId" />
+  </div>
+  <div class="form-group">
+    <input type="submit" name="command" value="@Model.SearchAction" class="btn btn-default" />
+  </div>
+</form>
+
+@if(Model.searchCompleted) {
+    @if(Model.MyLeaves.Count>0) {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Employee Id
+                    </th>
+                    <th>
+                        Employee Name
+                    </th>
+                    <th>
+                        Leave Type
+                    </th>
+                    <th>
+                        Balance
+                    </th>
+                    <th></th>
+                    </tr>
+            </thead>
+            <tbody>
+                    @foreach(var leave in Model.MyLeaves) {
+                        <tr>
+                            <td>@leave.Employee.Id</td>
+                            <td>@leave.Employee.FirstName</td>
+                            <td>@leave.LeaveTypes.Name</td>
+                            <td>@leave.Balance</td>
+                        </tr>
+                }
+            </tbody>
+        </table>
+    } 
+    else if (Model.MyLeaveRequest.Count>0) {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Employee Id</th>
+                    <th>Leave Type</th>
+                    <th>Reason</th>
+                    <th>Leave Start Date</th>
+                    <th>Leave End Date</th>
+                    <th>No of Days</th>
+                    <th>Request Date</th>
+                    <th>Decision Date</th>
+                    <th>Pending Since</th>
+                    <th>Status</th>
+                    </tr>
+            </thead>
+            <tbody>
+                    @foreach(var leaveRequest in Model.MyLeaveRequest) {
+                        <tr>
+                            <td>@leaveRequest.Requestor.FirstName</td>
+                            <td>@leaveRequest.RequestorId</td>
+                            <td>@leaveRequest.LeaveTypes.Name</td>
+                            <td>@leaveRequest.Reason</td>
+                            <td>@leaveRequest.StartDate</td>
+                            <td>@leaveRequest.EndDate</td>
+                            <td>@leaveRequest.NoOfDays</td>
+                            <td>@leaveRequest.RequestDate</td>
+                            <td>@leaveRequest.ApprRejDate</td>
+                            <td>@leaveRequest.PendingSince</td>
+                            <td>@leaveRequest.RequestStatus</td>
+                        </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else {
+        <div class="alert alert-info">
+            <p>
+                <strong>No records exist</strong>
+            </p>
+        </div>
+    }
+}

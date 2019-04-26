@@ -1,0 +1,45 @@
+﻿@page
+@model ManagePendingRequestsModel
+@{
+}
+    @if(Model.PendingLeaveRequests.Count > 0) {
+    <h2>Pending Leave Requests</h2>
+    <table class="table">
+            <thead>
+                <tr>
+                    <th>Employee Id</th>
+                    <th>Name</th>
+                    <th>Request Id</th>
+                    <th>Leave Type</th>
+                    <th>Reason</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                    <th>Duration</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach(var pendingLeaveRequest in Model.PendingLeaveRequests) {
+                        <tr>
+                            <td>@pendingLeaveRequest.RequestorId</td>
+                            <td>@pendingLeaveRequest.Requestor.FirstName</td>
+                            <td>@pendingLeaveRequest.Id</td>
+                            <td>@pendingLeaveRequest.LeaveTypes.Name</td>
+                            <td>@pendingLeaveRequest.Reason</td>
+                            <td>@pendingLeaveRequest.StartDate</td>
+                            <td>@pendingLeaveRequest.EndDate</td>
+                            <td>@pendingLeaveRequest.RequestStatus</td>
+                            <td>@pendingLeaveRequest.NoOfDays</td>
+                            <td><a asp-page="/EditPendingRequest" asp-route-id="@pendingLeaveRequest.Id">Edit</a></td>
+                        </tr>
+                    }
+            </tbody>
+        </table>    
+} else {
+    <div class="alert alert-info">
+        <p>
+            No leave requests pending with you
+        </p>
+    </div>
+}

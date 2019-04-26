@@ -1,0 +1,68 @@
+﻿@page
+@model EditPendingRequestModel
+@{
+}
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>LeaveRequest</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="LeaveRequest.RequestorId" class="control-label"></label>
+                <input asp-for="LeaveRequest.RequestorId" disabled="disabled" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.Requestor.EmployeeName" class="control-label"></label>
+                <input asp-for="LeaveRequest.Requestor.EmployeeName" disabled="disabled" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.LeaveTypes.Name" class="control-label"></label>
+                <input asp-for="LeaveRequest.LeaveTypes.Name" disabled="disabled" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.Reason" class="control-label"></label>
+                <input asp-for="LeaveRequest.Reason" disabled="disabled" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.StartDate" class="control-label"></label>
+                <input asp-for="LeaveRequest.StartDate" disabled="disabled"  class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.EndDate" class="control-label"></label>
+                <input asp-for="LeaveRequest.EndDate" disabled="disabled"  class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.RequestDate" class="control-label"></label>
+                <input asp-for="LeaveRequest.RequestDate" disabled="disabled"  class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.RequestStatus" class="control-label"></label>
+                <input asp-for="LeaveRequest.RequestStatus" disabled="disabled"  class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveRequest.NoOfDays" class="control-label"></label>
+                <input asp-for="LeaveRequest.NoOfDays" disabled="disabled" class="form-control" />
+            </div>
+            <form method="post">
+                <div class="form-group">
+                    <input type="hidden" asp-for="LeaveRequest.Id" />
+                    <input type="submit" name="command" value="Approve" class="btn btn-default" />
+                    <input type="submit"  name="command" value="Reject" class="btn btn-default" />
+                </div>
+            </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

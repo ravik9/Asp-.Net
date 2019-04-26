@@ -1,0 +1,39 @@
+@page
+@model CoreLms.Pages.Leaves.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this Leave?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Leave.LeaveTypes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Leave.LeaveTypes.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Leave.Balance)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Leave.Balance)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Leave.Employee)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Leave.Employee.Id)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Leave.Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
